@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.myapp.awesomewallpapers"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+<uses-permission android:name="android.permission.VIBRATE" />
+<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+ 
+<!--
+  IMPORTANT: Change "com.parse.tutorials.pushnotifications.permission.C2D_MESSAGE" in the lines below
+  to match your app's package name + ".permission.C2D_MESSAGE".
+-->
+<permission android:protectionLevel="signature"
+    android:name="com.myapp.awesomewallpapers.permission.C2D_MESSAGE" />
+<uses-permission android:name="com.myapp.awesomewallpapers.permission.C2D_MESSAGE" />
+    <application
+        android:name="info.androidhive.awesomewallpapers.app.AppController"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/FreeWallTheme" >
+        <meta-data 
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+        
+        
+        <activity
+            android:name="com.myapp.awesomewallpaper.SplashActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.myapp.awesomewallpaper.MainActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.myapp.awesomewallpaper.FullScreenViewActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.myapp.awesomewallpaper.SettingsActivity"
+            android:label="@string/action_settings"
+            android:screenOrientation="portrait" >
+        </activity>
+ <activity android:name="com.google.android.gms.ads.AdActivity"
+             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>       
+    
+    <service android:name="com.parse.PushService" />
+<receiver android:name="com.parse.ParseBroadcastReceiver">
+  <intent-filter>
+    <action android:name="android.intent.action.BOOT_COMPLETED" />
+    <action android:name="android.intent.action.USER_PRESENT" />
+  </intent-filter>
+</receiver>
+<receiver android:name="com.parse.GcmBroadcastReceiver"
+    android:permission="com.google.android.c2dm.permission.SEND">
+  <intent-filter>
+    <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+    <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+ 
+    <!--
+      IMPORTANT: Change "com.parse.tutorials.pushnotifications" to match your app's package name.
+    -->
+    <category android:name="com.myapp.awesomewallpapers" />
+  </intent-filter>
+</receiver>
+   
+<receiver
+    android:name="com.myapp.awesomewallpaper.Customrec"
+    android:exported="false" >
+    <intent-filter>
+        <action android:name="com.myapp.awesomewallpapers.custom" />
+    </intent-filter>
+</receiver>
+<receiver
+    android:name="com.myapp.awesomewallpaper.AppWidget"
+    android:icon="@drawable/ic_launcher"
+    android:label="@string/app_name" >
+  
+    <intent-filter>
+        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+ 
+    </intent-filter>
+
+    <meta-data
+        android:name="android.appwidget.provider"
+        android:resource="@xml/widget_provider" />
+  
+</receiver>
+      <service 
+          android:name="com.myapp.awesomewallpaper.Walser"
+          ></service>
+    </application>
+
+</manifest>
